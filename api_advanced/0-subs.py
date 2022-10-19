@@ -1,16 +1,21 @@
 #!/usr/bin/python3
 """ Return the number of subscribers """
+
+
+import json
 import requests
+import sys
 
 
 def number_of_subscribers(subreddit):
-    """ Return a number of subscribers """
-    base_url = 'https://www.reddit.com'
-    api_one = '{base}/r/{subreddit}/about.json'.format(base=base_url,
-                                                       subreddit=subreddit)
-    user_agent = {'User-Agent': 'Python/requests'}
-    res = requests.get(api_uri, headers=user_agent,
-                       allow_redirects=False)
-    if res.status_code in [302, 404]:
+    """ Return  subscribers"""
+    if len(sys.argv) < 2:
         return 0
-    return res.json().get('data').get('subscribers')
+    else:
+        url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+        headers = {"User-Agent": "Mozilla/5.0"}
+        result = requests.get(url, headers=headers, allow_redirects=False)
+        if result.status_code != 200:
+            return 0
+        body = json.loads(result.text)
+        return body["data"]["subscribers"]
