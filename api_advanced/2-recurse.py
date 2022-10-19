@@ -5,7 +5,7 @@ import requests
 
 
 def recurse(subreddit, hot_list=[], after=''):
-    """Returns a list containing the titles 
+    """Returns a list containing the title 
     """
     # Set the Default URL strings
     base_url = 'https://www.reddit.com'
