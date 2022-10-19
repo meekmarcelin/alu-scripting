@@ -1,4 +1,3 @@
-
 #!/usr/bin/python3
 """Quirry for the reddit api and parse the title of all hot articles
 """
