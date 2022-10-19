@@ -14,5 +14,3 @@ def number_of_subscribers(subreddit):
     if res.status_code in [302, 404]:
         return 0
     return res.json().get('data').get('subscribers')
-
-
